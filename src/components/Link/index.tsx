@@ -1,7 +1,8 @@
-import React, { FunctionComponent, HTMLProps } from 'react'
+import React, { FunctionComponent, HTMLProps, ReactNode } from 'react'
+import NextLink, { LinkProps } from 'next/link'
 
-import { useVariant } from '../../props'
 import { Text, TextProps } from '../Text'
+import { useVariant, VariantProps } from '../../props'
 
 export const AnchorLink: FunctionComponent<TextProps &
   HTMLProps<HTMLAnchorElement>> = ({
@@ -16,3 +17,16 @@ export const AnchorLink: FunctionComponent<TextProps &
     </Text>
   )
 }
+
+export const Link: FunctionComponent<LinkProps &
+  VariantProps & {
+    children: ReactNode
+    anchorProps?: TextProps & HTMLProps<HTMLAnchorElement>
+    target?: '_blank'
+  }> = ({ as, variant, children, anchorProps, target, ...rest }) => (
+  <NextLink passHref {...rest}>
+    <AnchorLink variant={variant} target={target} {...anchorProps}>
+      {children}
+    </AnchorLink>
+  </NextLink>
+)
