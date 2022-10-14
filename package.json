@@ -23,7 +23,8 @@
   },
   "peerDependencies": {
     "react": ">=16",
-    "styled-components": ">=5"
+    "styled-components": ">=5",
+    "next": ">=12"
   },
   "husky": {
     "hooks": {
