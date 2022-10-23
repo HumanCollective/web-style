@@ -1,5 +1,3 @@
-import { DefaultTheme } from 'styled-components'
-
 import { DEFAULT_COLORS } from './colors'
 import { DEFAULT_FONT_SIZES } from './fontSizes'
 import { DEFAULT_TYPEFACES } from './typefaces'
