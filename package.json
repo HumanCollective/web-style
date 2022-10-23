@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -22,9 +22,9 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
+    "next": ">=12",
     "react": ">=16",
-    "styled-components": ">=5",
-    "next": ">=12"
+    "styled-components": ">=5"
   },
   "husky": {
     "hooks": {
