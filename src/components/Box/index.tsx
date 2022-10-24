@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent, HTMLProps } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  HTMLProps,
+  ReactNode,
+} from 'react'
 import styled, { css } from 'styled-components'
 
 import {
@@ -31,6 +36,7 @@ export interface BoxProps
   onClick?: DivProps['onClick']
   interactive?: boolean
   style?: Partial<CSSProperties>
+  children?: ReactNode
 }
 
 export const getSurfaceStyle = (props: BoxProps) => css<BoxProps>`

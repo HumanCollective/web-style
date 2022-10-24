@@ -10,20 +10,32 @@ const spinAnimation = keyframes`
 `
 
 const DEFAULT_COLOR: ColorName = 'Shading.200'
+const sizes = {
+  xs: 12,
+  sm: 24,
+  md: 36,
+  lg: 60,
+  xl: 80,
+} as const
+type SizeName = keyof typeof sizes
 
-const SpinnerRing = styled.div<{ color?: ColorName }>`
+const SpinnerRing = styled.div<{
+  color?: ColorName
+  size?: SizeName
+}>`
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: ${({ size = 'md' }) => sizes[size]}px;
+  height: ${({ size = 'md' }) => sizes[size]}px;
   & div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid ${({ color }) => getColor(color ?? DEFAULT_COLOR)};
+    width: ${({ size = 'md' }) => Math.floor(sizes[size] * 0.8)}px;
+    height: ${({ size = 'md' }) => Math.floor(sizes[size] * 0.8)}px;
+    margin: ${({ size = 'md' }) => Math.ceil(sizes[size] * 0.1)}px;
+    border: ${({ size = 'md' }) => Math.ceil(sizes[size] * 0.1)}px solid
+      ${({ color }) => getColor(color ?? DEFAULT_COLOR)};
     border-radius: 50%;
     animation: ${spinAnimation} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: ${({ color }) => getColor(color ?? DEFAULT_COLOR)} transparent
@@ -42,10 +54,11 @@ const SpinnerRing = styled.div<{ color?: ColorName }>`
 
 interface SpinnerProps {
   color?: ColorName
+  size?: SizeName
 }
 
-export const Spinner: FunctionComponent<SpinnerProps> = ({ color }) => (
-  <SpinnerRing color={color}>
+export const Spinner: FunctionComponent<SpinnerProps> = ({ color, size }) => (
+  <SpinnerRing color={color} size={size}>
     <div></div>
     <div></div>
     <div></div>

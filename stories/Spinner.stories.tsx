@@ -3,7 +3,8 @@ import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
 import { THEME } from '../src/theme'
-import { Spinner } from '../src/components'
+import { Row, Spinner } from '../src/components'
+import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
   title: 'Spinner',
@@ -17,7 +18,21 @@ export default meta
 
 const Template: Story = (args) => (
   <ThemeProvider theme={THEME}>
-    <Spinner {...args} />
+    <GlobalStyle />
+    <Row>
+      <Spinner {...args} size="xs" />
+      <Spinner {...args} size="sm" />
+      <Spinner {...args} size="md" />
+      <Spinner {...args} size="lg" />
+      <Spinner {...args} size="xl" />
+    </Row>
+    <Row>
+      <Spinner {...args} color="Primary.300" size="xs" />
+      <Spinner {...args} color="Primary.300" size="sm" />
+      <Spinner {...args} color="Primary.300" size="md" />
+      <Spinner {...args} color="Primary.300" size="lg" />
+      <Spinner {...args} color="Primary.300" size="xl" />
+    </Row>
   </ThemeProvider>
 )
 
