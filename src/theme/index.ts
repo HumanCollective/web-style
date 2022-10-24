@@ -13,8 +13,6 @@ import { DEFAULT_GRID_UNITS } from './gridUnits'
 
 export const makeTheme = <
   ProjectDefaults,
-  ProjectBreakpoints,
-  ProjectGridUnits,
   ProjectTypefaces,
   ProjectColors,
   ProjectFontSizes,
@@ -24,29 +22,17 @@ export const makeTheme = <
   ProjectElevations,
   ProjectLetterSpacings
 >({
-  defaults,
-  breakpoints,
-  gridUnits,
-  typefaces,
-  colors,
-  fontSizes,
-  lineHeights,
-  variants,
-  radii,
-  elevations,
-  letterSpacings,
-}: {
-  defaults?: ProjectDefaults
-  breakpoints?: ProjectBreakpoints
-  gridUnits?: ProjectGridUnits
-  typefaces?: ProjectTypefaces
-  colors?: ProjectColors
-  fontSizes?: ProjectFontSizes
-  lineHeights?: ProjectLineHeights
-  variants?: ProjectVariants
-  radii?: ProjectRadii
-  elevations?: ProjectElevations
-  letterSpacings?: ProjectLetterSpacings
+  defaults = {} as ProjectDefaults,
+  breakpoints = null as number[] | null,
+  gridUnits = null as number[] | null,
+  typefaces = {} as ProjectTypefaces,
+  colors = {} as ProjectColors,
+  fontSizes = {} as ProjectFontSizes,
+  lineHeights = {} as ProjectLineHeights,
+  variants = {} as ProjectVariants,
+  radii = {} as ProjectRadii,
+  elevations = {} as ProjectElevations,
+  letterSpacings = {} as ProjectLetterSpacings,
 } = {}) =>
   Object.freeze({
     defaults: { ...DEFAULT_THEME_DEFAULTS, ...defaults },
@@ -63,11 +49,3 @@ export const makeTheme = <
   })
 
 export const DEFAULT_THEME = makeTheme()
-
-export type TypefaceName = keyof DefaultTheme['typefaces']
-export type ColorName = keyof DefaultTheme['colors']
-export type FontSizeName = keyof DefaultTheme['fontSizes']
-export type LineHeightName = keyof DefaultTheme['lineHeights']
-export type VariantName = keyof DefaultTheme['variants']
-export type ElevationName = keyof DefaultTheme['radii']
-export type LetterSpacingName = keyof DefaultTheme['letterSpacings']

@@ -1,14 +1,8 @@
 import { DefaultTheme } from 'styled-components'
-import {
-  FontSizeName,
-  LetterSpacingName,
-  LineHeightName,
-  TypefaceName,
-} from '../theme'
 
 export interface FontProps {
   font?: string
-  typeface?: TypefaceName
+  typeface?: keyof DefaultTheme['typefaces']
 }
 
 export const getFont = ({ font, typeface }: FontProps) => ({
@@ -40,7 +34,7 @@ export const getCasing = ({
 }
 
 export interface FontSizeProps {
-  fontSize?: FontSizeName | FontSizeName[]
+  fontSize?: keyof DefaultTheme['fontSizes'] | keyof DefaultTheme['fontSizes'][]
 }
 
 const makeStaticSize = (size: number) => `font-size: ${size}px;`
@@ -62,14 +56,14 @@ export const getFontSize = ({ fontSize = 'md' }: FontSizeProps = {}) => ({
   theme: DefaultTheme
 }) => {
   const { fontSizes, breakpoints } = theme
-  const size = fontSizes[fontSize]
+  const size = fontSizes[fontSize] as number | number[]
   return Array.isArray(size)
     ? makeResponsiveSize(size, breakpoints)
     : makeStaticSize(size)
 }
 
 export interface LineHeightProps extends FontSizeProps {
-  lineHeight?: LineHeightName
+  lineHeight?: keyof DefaultTheme['lineHeights']
 }
 
 const snapToGrid = (value: number, gridUnits: number[]) =>
@@ -112,7 +106,7 @@ export const getLineHeight = ({
 }: LineHeightProps = {}) => ({ theme }: { theme: DefaultTheme }) => {
   const { fontSizes, lineHeights, gridUnits, breakpoints } = theme
   const ratio = lineHeights[lineHeight]
-  const size = fontSizes[fontSize]
+  const size = fontSizes[fontSize] as number | number[]
   return Array.isArray(size)
     ? makeResponsiveLineHeight(size, ratio, gridUnits, breakpoints)
     : makeStaticLineHeight(size, ratio, gridUnits)
@@ -151,7 +145,7 @@ export const getUnderline = ({ underline }: UnderlineProps = {}) => {
 }
 
 export interface LetterSpacingProps {
-  letterSpacing?: LetterSpacingName
+  letterSpacing?: keyof DefaultTheme['letterSpacings']
 }
 export const getLetterSpacing = ({
   letterSpacing,

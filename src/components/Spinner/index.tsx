@@ -1,15 +1,14 @@
 import React, { FunctionComponent } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { DefaultTheme, keyframes } from 'styled-components'
 
 import { color as getColor } from '../../props'
-import { ColorName } from '../../theme'
 
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `
 
-const DEFAULT_COLOR: ColorName = 'Shading.200'
+const DEFAULT_COLOR: keyof DefaultTheme['colors'] = 'Shading.200'
 const sizes = {
   xs: 12,
   sm: 24,
@@ -20,7 +19,7 @@ const sizes = {
 type SizeName = keyof typeof sizes
 
 const SpinnerRing = styled.div<{
-  color?: ColorName
+  color?: keyof DefaultTheme['colors']
   size?: SizeName
 }>`
   display: inline-block;
@@ -53,7 +52,7 @@ const SpinnerRing = styled.div<{
 `
 
 interface SpinnerProps {
-  color?: ColorName
+  color?: keyof DefaultTheme['colors']
   size?: SizeName
 }
 

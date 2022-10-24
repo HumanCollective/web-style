@@ -4,16 +4,16 @@ import 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    defaults: typeof projectTheme.defaults
-    breakpoints: typeof projectTheme.breakpoints
-    gridUnits: typeof projectTheme.gridUnits
-    typefaces: typeof projectTheme.typefaces
-    colors: typeof projectTheme.colors
-    fontSizes: typeof projectTheme.fontSizes
-    lineHeights: typeof projectTheme.lineHeights
-    variants: typeof projectTheme.variants
-    radii: typeof projectTheme.radii
-    elevations: typeof projectTheme.elevations
-    letterSpacings: typeof projectTheme.letterSpacings
+    defaults: typeof DEFAULT_THEME['defaults']
+    breakpoints: typeof DEFAULT_THEME['breakpoints']
+    gridUnits: typeof DEFAULT_THEME['gridUnits']
+    typefaces: typeof DEFAULT_THEME['typefaces']
+    colors: typeof DEFAULT_THEME['colors']
+    fontSizes: typeof DEFAULT_THEME['fontSizes']
+    lineHeights: typeof DEFAULT_THEME['lineHeights']
+    variants: typeof DEFAULT_THEME['variants']
+    radii: typeof DEFAULT_THEME['radii']
+    elevations: typeof DEFAULT_THEME['elevations']
+    letterSpacings: typeof DEFAULT_THEME['letterSpacings']
   }
 }

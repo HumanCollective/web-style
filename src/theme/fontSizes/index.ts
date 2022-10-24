@@ -4,4 +4,4 @@ export const DEFAULT_FONT_SIZES = {
   md: [14, 16],
   sm: [12, 14],
   xs: [10, 12],
-}
+} as const

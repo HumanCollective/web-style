@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import { THEME } from './theme'
 
 export const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
