@@ -35,22 +35,22 @@ export const makeTheme = <
   elevations,
   letterSpacings,
 }: {
-  defaults: ProjectDefaults
-  breakpoints: ProjectBreakpoints
-  gridUnits: ProjectGridUnits
-  typefaces: ProjectTypefaces
-  colors: ProjectColors
-  fontSizes: ProjectFontSizes
-  lineHeights: ProjectLineHeights
-  variants: ProjectVariants
-  radii: ProjectRadii
-  elevations: ProjectElevations
-  letterSpacings: ProjectLetterSpacings
+  defaults?: ProjectDefaults
+  breakpoints?: ProjectBreakpoints
+  gridUnits?: ProjectGridUnits
+  typefaces?: ProjectTypefaces
+  colors?: ProjectColors
+  fontSizes?: ProjectFontSizes
+  lineHeights?: ProjectLineHeights
+  variants?: ProjectVariants
+  radii?: ProjectRadii
+  elevations?: ProjectElevations
+  letterSpacings?: ProjectLetterSpacings
 }) =>
   Object.freeze({
     defaults: { ...DEFAULT_THEME_DEFAULTS, ...defaults },
-    breakpoints: { ...DEFAULT_BREAKPOINTS, ...breakpoints },
-    gridUnits: { ...DEFAULT_GRID_UNITS, ...gridUnits },
+    breakpoints: breakpoints ?? DEFAULT_BREAKPOINTS,
+    gridUnits: gridUnits ?? DEFAULT_GRID_UNITS,
     typefaces: { ...DEFAULT_TYPEFACES, ...typefaces },
     colors: { ...DEFAULT_COLORS, ...colors },
     fontSizes: { ...DEFAULT_FONT_SIZES, ...fontSizes },
