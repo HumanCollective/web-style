@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME } from '../src/theme'
+import { DEFAULT_THEME } from '../src/theme'
 import { Box } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
@@ -14,7 +14,7 @@ const meta: Meta = {
 export default meta
 
 const Template: Story = () => (
-  <ThemeProvider theme={THEME}>
+  <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
     <Box
       backgroundColor="Shading.150"

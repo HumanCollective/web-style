@@ -1,7 +1,6 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
-import { Column } from '../Column'
 import {
   ColorProps,
   getCasing,
@@ -19,17 +18,17 @@ import {
   getUnitsAround,
   UnitsAroundProps,
   getTextAlign,
-  useVariant,
-  VariantProps,
   getSizing,
   SizingProps,
   FlexProps,
   getFlex,
   LetterSpacingProps,
   getLetterSpacing,
+  TransitionProps,
+  getTransition,
 } from '../../props'
 
-export interface TextProps
+export interface TextStyleProps
   extends UnitsAroundProps,
     ColorProps,
     FontProps,
@@ -38,16 +37,19 @@ export interface TextProps
     LineHeightProps,
     TextAlignProps,
     UnderlineProps,
-    VariantProps,
     SizingProps,
     FlexProps,
-    LetterSpacingProps {
+    LetterSpacingProps,
+    TransitionProps {}
+
+export interface TextProps {
   as?: keyof JSX.IntrinsicElements
   style?: CSSProperties
   children?: ReactNode
+  variant?: TextStyleProps
 }
 
-const getTextStyle = (props?: TextProps = {}) => css<TextProps>`
+export const getTextStyle = (props: TextStyleProps = {}) => css`
   ${getFlex(props)}
   ${getFont(props)}
   ${getUnderline(props)}
@@ -59,47 +61,15 @@ const getTextStyle = (props?: TextProps = {}) => css<TextProps>`
   ${getTextAlign(props)}
   ${getSizing(props)}
   ${getLetterSpacing(props)}
+  ${getTransition(props)}
 `
 
-const StyledText = styled.span<TextProps>`
+const StyledText = styled.span<TextStyleProps>`
   ${getTextStyle}
 `
 
-export const Text: FunctionComponent<TextProps> = ({
+export const Text: FunctionComponent<TextProps & TextStyleProps> = ({
   as = 'p',
-  variant = 'Default',
+  variant,
   ...props
-}) => {
-  const style = useVariant(`Text.${variant}`)
-  return <StyledText as={as} {...style} {...props} />
-}
-
-export const RichText = styled(Column)`
-  h1 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H1'])};
-  }
-  h2 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H2'])};
-  }
-  h3 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H3'])};
-  }
-  h4 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H4'])};
-  }
-  h5 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H5'])};
-  }
-  h6 {
-    ${({ theme }) => getTextStyle(theme.variants['Text.H6'])};
-  }
-  p {
-    ${({ theme }) => getTextStyle(theme.variants['Text.Description'])};
-  }
-  ul {
-    ${({ theme }) => getTextStyle(theme.variants['Text.UnorderedList'])};
-  }
-  ol {
-    ${({ theme }) => getTextStyle(theme.variants['Text.OrderedList'])};
-  }
-`
+}) => <StyledText as={as} {...variant} {...props} />

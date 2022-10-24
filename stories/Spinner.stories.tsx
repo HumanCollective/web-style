@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME } from '../src/theme'
+import { DEFAULT_THEME } from '../src/theme'
 import { Row, Spinner } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
@@ -17,7 +17,7 @@ const meta: Meta = {
 export default meta
 
 const Template: Story = (args) => (
-  <ThemeProvider theme={THEME}>
+  <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
     <Row>
       <Spinner {...args} size="xs" />

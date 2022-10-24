@@ -16,29 +16,33 @@ import {
   UnitsAroundProps,
   getRadius,
   RadiusProps,
-  VariantProps,
-  useVariant,
   color,
+  SizingProps,
 } from '../../props'
 
-interface BaseInputProps
+interface InputStyleProps
   extends UnitsAroundProps,
     ColorProps,
     FontProps,
     CasingProps,
     FontSizeProps,
     LineHeightProps,
-    RadiusProps {
-  maxWidth?: number
+    RadiusProps,
+    SizingProps {}
+
+export interface InputVariant {
+  default: InputStyleProps
+  disabled: InputStyleProps
+}
+
+interface BaseInputProps {
   ref?: Ref<HTMLInputElement>
 }
 
-export const BaseInput = styled.input<BaseInputProps>`
+export const BaseInput = styled.input<InputStyleProps>`
   display: flex;
-  width: 100%;
   border: 1px solid transparent;
-  ${({ maxWidth }) => (maxWidth ? `max-width: ${maxWidth}px;` : '')}
-  ${({ font, typeface }) => getFont({ font, typeface })}
+  ${getFont}
   ${getColors}
   ${getUnitsAround}
   ${getCasing}
@@ -53,14 +57,16 @@ export const BaseInput = styled.input<BaseInputProps>`
 `
 
 export type InputProps = BaseInputProps &
-  VariantProps &
-  HTMLProps<HTMLInputElement>
+  HTMLProps<HTMLInputElement> & {
+    variant?: InputVariant
+  }
 
-export const Input: FunctionComponent<InputProps> = ({
+export const Input: FunctionComponent<InputProps & InputStyleProps> = ({
   ref,
-  variant = 'Default',
+  variant,
+  disabled,
   ...props
 }) => {
-  const style = useVariant(`Input.${variant}`)
-  return <BaseInput {...style} {...props} />
+  const selectedVariant = variant?.[disabled ? 'disabled' : 'default']
+  return <BaseInput {...selectedVariant} {...props} />
 }

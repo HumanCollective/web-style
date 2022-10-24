@@ -1,29 +1,49 @@
 const DEFAULT_PRIMARY_COLORS = {
-  'Primary.100': '#e5e3f9',
-  'Primary.150': '#cbc7fd',
-  'Primary.200': '#a39dfa',
-  'Primary.250': '#6c62fb',
-  'Primary.300': '#4233ff',
-  'Primary.350': '#2319bb',
-  'Primary.400': '#0f097c',
+  'Primary.100': '#DAD6FF',
+  'Primary.150': '#B5ADFF',
+  'Primary.200': '#8F84FF',
+  'Primary.250': '#7266FF',
+  'Primary.300': '#4233FF',
+  'Primary.350': '#3125DB',
+  'Primary.400': '#2219B7',
+  'Primary.450': '#161093',
+  'Primary.500': '#0E097A',
 }
 
 const DEFAULT_SUCCESS_COLORS = {
-  'Success.200': '#42ffbb',
-  'Success.300': '#00d491',
-  'Success.400': '#009564',
+  'Success.100': '#F5FCCB',
+  'Success.150': '#E9FA99',
+  'Success.200': '#D5F164',
+  'Success.250': '#BFE43E',
+  'Success.300': '#A0D306',
+  'Success.350': '#84B504',
+  'Success.400': '#6B9703',
+  'Success.450': '#537A01',
+  'Success.500': '#426501',
 }
 
 const DEFAULT_WARNING_COLORS = {
-  'Warning.200': '#fdd082',
-  'Warning.300': '#ffbe3d',
-  'Warning.400': '#d39412',
+  'Warning.100': '#FFF5CD',
+  'Warning.150': '#FFE89B',
+  'Warning.200': '#FFD869',
+  'Warning.250': '#FFC943',
+  'Warning.300': '#FFAF05',
+  'Warning.350': '#DB8F03',
+  'Warning.400': '#B77102',
+  'Warning.450': '#935601',
+  'Warning.500': '#7A4300',
 }
 
 const DEFAULT_DANGER_COLORS = {
-  'Danger.200': '#ff7479',
-  'Danger.300': '#f33a44',
-  'Danger.400': '#bf242d',
+  'Danger.100': '#FFE4D5',
+  'Danger.150': '#FFC2AC',
+  'Danger.200': '#FF9982',
+  'Danger.250': '#FF7363',
+  'Danger.300': '#FF3330',
+  'Danger.350': '#DB2330',
+  'Danger.400': '#B71831',
+  'Danger.450': '#930F2F',
+  'Danger.500': '#7A092E',
 }
 
 const DEFAULT_LIGHT_SHADING_COLORS = {
@@ -72,6 +92,7 @@ export const DEFAULT_DARK_COLORS = {
   ...DEFAULT_WARNING_COLORS,
   ...DEFAULT_DANGER_COLORS,
   ...DEFAULT_DARK_SHADING_COLORS,
+  transparent: 'transparent',
 }
 
 export const DEFAULT_COLORS = {
@@ -80,4 +101,5 @@ export const DEFAULT_COLORS = {
   ...DEFAULT_WARNING_COLORS,
   ...DEFAULT_DANGER_COLORS,
   ...DEFAULT_LIGHT_SHADING_COLORS,
+  transparent: 'transparent',
 }

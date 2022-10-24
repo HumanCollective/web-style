@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME } from '../src/theme'
+import { DEFAULT_THEME } from '../src/theme'
 import { Text, TextProps } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
@@ -27,7 +27,7 @@ const meta: Meta = {
 export default meta
 
 const Template: Story<TextProps> = (args) => (
-  <ThemeProvider theme={THEME}>
+  <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
     <Text {...args} />
   </ThemeProvider>

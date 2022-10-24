@@ -2,10 +2,9 @@ import { css, DefaultTheme } from 'styled-components'
 
 export interface ElevationProps {
   elevation?: keyof DefaultTheme['elevations']
-  interactive?: boolean
 }
 
-export const getElevation = ({ elevation, interactive }: ElevationProps) => ({
+export const getElevation = ({ elevation }: ElevationProps) => ({
   theme,
 }: {
   theme: DefaultTheme
@@ -13,15 +12,5 @@ export const getElevation = ({ elevation, interactive }: ElevationProps) => ({
   elevation
     ? css`
         ${theme.elevations[elevation]}
-        ${interactive
-          ? css`
-              &:hover {
-                ${theme.elevations[`${elevation as 'md'}:hover`]}
-              }
-              &:active {
-                ${theme.elevations[`${elevation as 'md'}:active`]}
-              }
-            `
-          : ''}
       `
     : ''

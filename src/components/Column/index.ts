@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps, BoxStyleProps } from '../Box'
 import {
   getHorizontalAlignment,
   getVerticalAlignment,
@@ -8,12 +8,14 @@ import {
   VerticalAlignmentProps,
 } from '../../props'
 
-export interface ColumnProps
+export interface ColumnStyleProps
   extends VerticalAlignmentProps,
     HorizontalAlignmentProps,
-    BoxProps {}
+    BoxStyleProps {}
 
-export const Column = styled(Box)<ColumnProps>`
+export interface ColumnProps extends BoxProps {}
+
+export const Column = styled(Box)<ColumnProps & ColumnStyleProps>`
   border-style: solid;
   flex-direction: column;
   ${getVerticalAlignment('column')}

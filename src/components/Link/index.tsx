@@ -1,10 +1,11 @@
 import React, { FunctionComponent, HTMLProps, ReactNode } from 'react'
 import NextLink, { LinkProps } from 'next/link'
 
-import { Text, TextProps } from '../Text'
+import { Text, TextProps, TextStyleProps } from '../Text'
 import { useVariant, VariantProps } from '../../props'
 
 export const AnchorLink: FunctionComponent<TextProps &
+  TextStyleProps &
   HTMLProps<HTMLAnchorElement>> = ({
   children,
   variant = 'Default',
@@ -19,6 +20,7 @@ export const AnchorLink: FunctionComponent<TextProps &
 }
 
 export const Link: FunctionComponent<LinkProps &
+  TextStyleProps &
   VariantProps &
   TextProps & {
     children: ReactNode

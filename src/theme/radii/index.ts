@@ -1,6 +1,7 @@
 export const DEFAULT_RADII = {
-  sm: 4,
-  md: 6,
-  lg: 12,
+  sm: 6,
+  md: 12,
+  lg: 18,
+  xl: 24,
   pill: 9999,
 }

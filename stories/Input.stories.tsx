@@ -2,14 +2,16 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME } from '../src/theme'
-import { Input, InputProps } from '../src/components'
+import { DEFAULT_THEME } from '../src/theme'
+import { Fold, Input, InputProps } from '../src/components'
 import { GlobalStyle } from '../src/globals'
+import { defaultInputVariant } from '../src/theme/variants'
 
 const meta: Meta = {
   title: 'Input',
   component: Input,
   parameters: {
+    layout: 'fullscreen',
     controls: { expanded: true },
   },
 }
@@ -17,9 +19,16 @@ const meta: Meta = {
 export default meta
 
 const Template: Story<InputProps> = (args) => (
-  <ThemeProvider theme={THEME}>
+  <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
-    <Input {...args} />
+    <Fold alignCenter alignMiddle backgroundColor="Shading.100">
+      <Input
+        variant={defaultInputVariant}
+        unitsAround={1}
+        maxUnitWidth={40}
+        {...args}
+      />
+    </Fold>
   </ThemeProvider>
 )
 

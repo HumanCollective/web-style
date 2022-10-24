@@ -2,9 +2,10 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME } from '../src/theme'
+import { DEFAULT_THEME } from '../src/theme'
 import { GlobalStyle } from '../src/globals'
-import { RichText, TextProps } from '../src/components'
+import { RichText, RichTextProps } from '../src/components'
+import { longformRichText } from '../src/theme/variants'
 
 const meta: Meta = {
   title: 'RichText',
@@ -16,10 +17,10 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<Omit<TextProps, 'children'>> = (args) => (
-  <ThemeProvider theme={THEME}>
+const Template: Story<RichTextProps> = (args) => (
+  <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
-    <RichText {...args}>
+    <RichText variant={longformRichText} maxUnitWidth={50} {...args}>
       <h1>Lorem Ipsum Dolor Sit Amet</h1>
       <p>
         Ut eleifend euismod leo et laoreet. Nullam eget eleifend ipsum. Mauris

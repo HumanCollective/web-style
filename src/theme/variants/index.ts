@@ -1,3 +1,63 @@
+import { InputVariant, RichTextVariant, TextStyleProps } from '../../components'
+
+export const defaultInputVariant: InputVariant = {
+  default: {
+    fontSize: 'md',
+    backgroundColor: 'Shading.125',
+    borderColor: 'Shading.250',
+    radius: 'md',
+    style: {
+      padding: 12,
+    },
+  },
+  disabled: {
+    fontSize: 'md',
+    backgroundColor: 'Shading.150',
+    radius: 'md',
+    style: {
+      padding: 12,
+    },
+  },
+  active: {
+    fontSize: 'md',
+    backgroundColor: 'Shading.150',
+    radius: 'md',
+    style: {
+      padding: 12,
+    },
+  },
+}
+
+export const H1: TextStyleProps = {
+  fontSize: 'xl',
+  textColor: 'foreground',
+  font: 'Bold',
+  lineHeight: 'md',
+}
+
+export const H2: TextStyleProps = {
+  fontSize: 'lg',
+  textColor: 'foreground',
+  font: 'Bold',
+}
+
+export const H3: TextStyleProps = {
+  textColor: 'foreground',
+  font: 'Bold',
+}
+
+export const paragraph: TextStyleProps = {
+  fontSize: 'md',
+  lineHeight: 'lg',
+}
+
+export const longformRichText: RichTextVariant = {
+  heading1: { ...H1, unitsBelow: 2 },
+  heading2: { ...H2, unitsBelow: 2 },
+  heading3: { ...H3, unitsBelow: 2 },
+  paragraph: { ...paragraph, unitsBelow: 2 },
+}
+
 export const DEFAULT_VARIANTS = {
   'Input.Default': {
     fontSize: 'md',
@@ -47,21 +107,6 @@ export const DEFAULT_VARIANTS = {
     centerText: true,
   },
 
-  'Text.H1': {
-    fontSize: 'xl',
-    textColor: 'foreground',
-    font: 'Bold',
-    lineHeight: 'md',
-  },
-  'Text.H2': {
-    fontSize: 'lg',
-    textColor: 'foreground',
-    font: 'Bold',
-  },
-  'Text.H3': {
-    textColor: 'foreground',
-    font: 'Bold',
-  },
   'Text.Eyebrow': {
     fontSize: 'md',
     textColor: 'foreground',

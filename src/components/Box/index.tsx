@@ -7,8 +7,6 @@ import React, {
 import styled, { css } from 'styled-components'
 
 import {
-  useVariant,
-  VariantProps,
   ColorProps,
   getColors,
   getUnitsAround,
@@ -21,49 +19,55 @@ import {
   getFlex,
   ElevationProps,
   getElevation,
+  getCursor,
+  CursorProps,
+  TransitionProps,
 } from '../../props'
+import { getTransition } from '../../props/Transition'
 
 type DivProps = HTMLProps<HTMLDivElement>
 
-export interface BoxProps
+export interface BoxStyleProps
   extends UnitsAroundProps,
     ColorProps,
     RadiusProps,
     ElevationProps,
-    VariantProps,
     SizingProps,
-    FlexProps {
-  onClick?: DivProps['onClick']
-  interactive?: boolean
+    FlexProps,
+    CursorProps,
+    TransitionProps {
   style?: Partial<CSSProperties>
-  children?: ReactNode
 }
 
-export const getSurfaceStyle = (props: BoxProps) => css<BoxProps>`
+export interface BoxProps {
+  onClick?: DivProps['onClick']
+  interactive?: boolean
+  children?: ReactNode
+  variant?: BoxStyleProps
+}
+
+export const getSurfaceStyle = (props: BoxStyleProps = {}) => css<
+  BoxStyleProps
+>`
   display: flex;
   position: relative;
   border-style: solid;
-  ${
-    props.interactive
-      ? 'cursor: pointer; transition: all 350ms ease-in-out;'
-      : ''
-  }
+  width: 100%;
   ${getFlex(props)}
   ${getSizing(props)}
   ${getColors(props)}
   ${getUnitsAround(props)}
   ${getRadius(props)}
   ${getElevation(props)}
+  ${getCursor(props)}
+  ${getTransition(props)}
 `
 
-export const Surface = styled.div<BoxProps>`
+export const Surface = styled.div<BoxStyleProps>`
   ${getSurfaceStyle}
 `
 
-export const Box: FunctionComponent<BoxProps> = ({
-  variant = 'Default',
+export const Box: FunctionComponent<BoxProps & BoxStyleProps> = ({
+  variant,
   ...props
-}) => {
-  const style = useVariant(`Box.${variant}`)
-  return <Surface {...style} {...props} />
-}
+}) => <Surface {...variant} {...props} />
