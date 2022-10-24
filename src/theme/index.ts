@@ -1,3 +1,4 @@
+import { DefaultTheme } from 'styled-components'
 import { DEFAULT_BREAKPOINTS } from './breakpoints'
 import { DEFAULT_COLORS } from './colors'
 import { DEFAULT_FONT_SIZES } from './fontSizes'
@@ -46,7 +47,7 @@ export const makeTheme = <
   radii?: ProjectRadii
   elevations?: ProjectElevations
   letterSpacings?: ProjectLetterSpacings
-}) =>
+} = {}) =>
   Object.freeze({
     defaults: { ...DEFAULT_THEME_DEFAULTS, ...defaults },
     breakpoints: breakpoints ?? DEFAULT_BREAKPOINTS,
@@ -61,10 +62,12 @@ export const makeTheme = <
     letterSpacings: { ...DEFAULT_LETTER_SPACINGS, ...letterSpacings },
   })
 
-export type TypefaceName = keyof typeof DEFAULT_TYPEFACES
-export type ColorName = keyof typeof DEFAULT_COLORS
-export type FontSizeName = keyof typeof DEFAULT_FONT_SIZES
-export type LineHeightName = keyof typeof DEFAULT_LINE_HEIGHTS
-export type VariantName = keyof typeof DEFAULT_VARIANTS
-export type ElevationName = keyof typeof DEFAULT_RADII
-export type LetterSpacingName = keyof typeof DEFAULT_LETTER_SPACINGS
+export const DEFAULT_THEME = makeTheme()
+
+export type TypefaceName = keyof DefaultTheme['typefaces']
+export type ColorName = keyof DefaultTheme['colors']
+export type FontSizeName = keyof DefaultTheme['fontSizes']
+export type LineHeightName = keyof DefaultTheme['lineHeights']
+export type VariantName = keyof DefaultTheme['variants']
+export type ElevationName = keyof DefaultTheme['radii']
+export type LetterSpacingName = keyof DefaultTheme['letterSpacings']
