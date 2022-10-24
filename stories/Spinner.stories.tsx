@@ -2,7 +2,8 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { Spinner, THEME } from '../src'
+import { THEME } from '../src/theme'
+import { Spinner } from '../src/components'
 
 const meta: Meta = {
   title: 'Spinner',

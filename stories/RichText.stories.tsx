@@ -2,7 +2,9 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { THEME, RichText, TextProps, GlobalStyle } from '../src'
+import { THEME } from '../src/theme'
+import { GlobalStyle } from '../src/globals'
+import { RichText, TextProps } from '../src/components'
 
 const meta: Meta = {
   title: 'RichText',

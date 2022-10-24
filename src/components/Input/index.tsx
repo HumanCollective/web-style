@@ -8,14 +8,12 @@ import {
   getFont,
   getFontSize,
   getLineHeight,
-  getPadding,
-  PaddingProps,
   FontProps,
   CasingProps,
   FontSizeProps,
   LineHeightProps,
-  getSpaceAround,
-  SpaceAroundProps,
+  getUnitsAround,
+  UnitsAroundProps,
   getRadius,
   RadiusProps,
   VariantProps,
@@ -24,13 +22,12 @@ import {
 } from '../../props'
 
 interface BaseInputProps
-  extends SpaceAroundProps,
+  extends UnitsAroundProps,
     ColorProps,
     FontProps,
     CasingProps,
     FontSizeProps,
     LineHeightProps,
-    PaddingProps,
     RadiusProps {
   maxWidth?: number
   ref?: Ref<HTMLInputElement>
@@ -43,11 +40,10 @@ export const BaseInput = styled.input<BaseInputProps>`
   ${({ maxWidth }) => (maxWidth ? `max-width: ${maxWidth}px;` : '')}
   ${({ font, typeface }) => getFont({ font, typeface })}
   ${getColors}
-  ${getSpaceAround}
+  ${getUnitsAround}
   ${getCasing}
   ${getFontSize}
   ${getLineHeight}
-  ${getPadding}
   ${getRadius}
 
   &:focus {

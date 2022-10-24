@@ -6,12 +6,12 @@ import {
   VariantProps,
   ColorProps,
   getColors,
-  getSpaceAround,
-  SpaceAroundProps,
+  getUnitsAround,
+  UnitsAroundProps,
   RadiusProps,
   getRadius,
-  SpacingProps,
-  getSpacing,
+  SizingProps,
+  getSizing,
   FlexProps,
   getFlex,
   ElevationProps,
@@ -21,12 +21,12 @@ import {
 type DivProps = HTMLProps<HTMLDivElement>
 
 export interface BoxProps
-  extends SpaceAroundProps,
+  extends UnitsAroundProps,
     ColorProps,
     RadiusProps,
     ElevationProps,
     VariantProps,
-    SpacingProps,
+    SizingProps,
     FlexProps {
   onClick?: DivProps['onClick']
   interactive?: boolean
@@ -43,9 +43,9 @@ export const getSurfaceStyle = (props: BoxProps) => css<BoxProps>`
       : ''
   }
   ${getFlex(props)}
-  ${getSpacing(props)}
+  ${getSizing(props)}
   ${getColors(props)}
-  ${getSpaceAround(props)}
+  ${getUnitsAround(props)}
   ${getRadius(props)}
   ${getElevation(props)}
 `

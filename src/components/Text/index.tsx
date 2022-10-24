@@ -16,13 +16,13 @@ import {
   FontSizeProps,
   LineHeightProps,
   TextAlignProps,
-  getSpaceAround,
-  SpaceAroundProps,
+  getUnitsAround,
+  UnitsAroundProps,
   getTextAlign,
   useVariant,
   VariantProps,
-  getSpacing,
-  SpacingProps,
+  getSizing,
+  SizingProps,
   FlexProps,
   getFlex,
   LetterSpacingProps,
@@ -30,7 +30,7 @@ import {
 } from '../../props'
 
 export interface TextProps
-  extends SpaceAroundProps,
+  extends UnitsAroundProps,
     ColorProps,
     FontProps,
     CasingProps,
@@ -39,7 +39,7 @@ export interface TextProps
     TextAlignProps,
     UnderlineProps,
     VariantProps,
-    SpacingProps,
+    SizingProps,
     FlexProps,
     LetterSpacingProps {
   as?: keyof JSX.IntrinsicElements
@@ -52,12 +52,12 @@ const getTextStyle = (props?: TextProps = {}) => css<TextProps>`
   ${getFont(props)}
   ${getUnderline(props)}
   ${getColors(props)}
-  ${getSpaceAround(props)}
+  ${getUnitsAround(props)}
   ${getCasing(props)}
   ${getFontSize(props)}
   ${getLineHeight(props)}
   ${getTextAlign(props)}
-  ${getSpacing(props)}
+  ${getSizing(props)}
   ${getLetterSpacing(props)}
 `
 

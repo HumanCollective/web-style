@@ -4,8 +4,8 @@ export const DEFAULT_VARIANTS = {
     backgroundColor: 'Shading.150',
     radius: 'md',
     paddingAround: 1,
-    spaceAbove: 1 / 2,
-    spaceBelow: 1 / 2,
+    unitsAbove: 1 / 2,
+    unitsBelow: 1 / 2,
   },
 
   'Button.Primary.Container': {
@@ -19,7 +19,7 @@ export const DEFAULT_VARIANTS = {
     font: 'Bold',
     textColor: 'Shading.100',
     letterSpacing: 'md',
-    spaceAround: 1,
+    unitsAround: 1,
     flex: 1,
     alignCenter: true,
     alignMiddle: true,
@@ -37,7 +37,7 @@ export const DEFAULT_VARIANTS = {
     textColor: 'Shading.300',
     fontSize: 'sm',
     letterSpacing: 'sm',
-    spaceAround: 3 / 4,
+    unitsAround: 3 / 4,
     flex: 1,
     alignCenter: true,
     alignMiddle: true,
@@ -48,7 +48,7 @@ export const DEFAULT_VARIANTS = {
     fontSize: 'xl',
     textColor: 'foreground',
     font: 'Bold',
-    lineHeight: 'sm',
+    lineHeight: 'md',
   },
   'Text.H2': {
     fontSize: 'lg',
@@ -82,8 +82,8 @@ export const DEFAULT_VARIANTS = {
     letterSpacing: 'md',
   },
   'FormInput.Default.LabelRow': {
-    spaceAbove: 1,
-    spaceBelow: 1 / 2,
+    unitsAbove: 1,
+    unitsBelow: 1 / 2,
   },
   'FormInput.Default.Container': {},
   'FormInput.Default.Error': {},

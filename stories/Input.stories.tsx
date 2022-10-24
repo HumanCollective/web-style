@@ -2,7 +2,8 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { Input, InputProps, THEME } from '../src'
+import { THEME } from '../src/theme'
+import { Input, InputProps } from '../src/components'
 
 const meta: Meta = {
   title: 'Input',
