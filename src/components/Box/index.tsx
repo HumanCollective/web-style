@@ -52,7 +52,6 @@ export const getSurfaceStyle = (props: BoxStyleProps = {}) => css<
   display: flex;
   position: relative;
   border-style: solid;
-  width: 100%;
   ${getFlex(props)}
   ${getSizing(props)}
   ${getColors(props)}
