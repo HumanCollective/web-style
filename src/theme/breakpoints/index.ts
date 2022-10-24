@@ -1,1 +1,1 @@
-export const DEFAULT_BREAKPOINTS = [960]
+export const DEFAULT_BREAKPOINTS: number[] = [960]

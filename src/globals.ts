@@ -137,8 +137,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    color: ${THEME.colors['Shading.500']};
-    background-color: ${THEME.colors['Shading.100']};
+    color: ${({ theme }) => theme.colors['Shading.500']}
+    background-color: ${({ theme }) => theme.colors['Shading.100']}
   }
 
   // SYSTEM FONT

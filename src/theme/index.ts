@@ -10,19 +10,56 @@ import { DEFAULT_ELEVATIONS } from './elevations'
 import { DEFAULT_LETTER_SPACINGS } from './letterSpacings'
 import { DEFAULT_GRID_UNITS } from './gridUnits'
 
-export const THEME = {
-  defaults: DEFAULT_THEME_DEFAULTS,
-  breakpoints: DEFAULT_BREAKPOINTS,
-  gridUnits: DEFAULT_GRID_UNITS,
-  typefaces: DEFAULT_TYPEFACES,
-  colors: DEFAULT_COLORS,
-  fontSizes: DEFAULT_FONT_SIZES,
-  lineHeights: DEFAULT_LINE_HEIGHTS,
-  variants: DEFAULT_VARIANTS,
-  radii: DEFAULT_RADII,
-  elevations: DEFAULT_ELEVATIONS,
-  letterSpacings: DEFAULT_LETTER_SPACINGS,
-} as const
+export const makeTheme = <
+  ProjectDefaults,
+  ProjectBreakpoints,
+  ProjectGridUnits,
+  ProjectTypefaces,
+  ProjectColors,
+  ProjectFontSizes,
+  ProjectLineHeights,
+  ProjectVariants,
+  ProjectRadii,
+  ProjectElevations,
+  ProjectLetterSpacings
+>({
+  defaults,
+  breakpoints,
+  gridUnits,
+  typefaces,
+  colors,
+  fontSizes,
+  lineHeights,
+  variants,
+  radii,
+  elevations,
+  letterSpacings,
+}: {
+  defaults: ProjectDefaults
+  breakpoints: ProjectBreakpoints
+  gridUnits: ProjectGridUnits
+  typefaces: ProjectTypefaces
+  colors: ProjectColors
+  fontSizes: ProjectFontSizes
+  lineHeights: ProjectLineHeights
+  variants: ProjectVariants
+  radii: ProjectRadii
+  elevations: ProjectElevations
+  letterSpacings: ProjectLetterSpacings
+}) =>
+  Object.freeze({
+    defaults: { ...DEFAULT_THEME_DEFAULTS, ...defaults },
+    breakpoints: { ...DEFAULT_BREAKPOINTS, ...breakpoints },
+    gridUnits: { ...DEFAULT_GRID_UNITS, ...gridUnits },
+    typefaces: { ...DEFAULT_TYPEFACES, ...typefaces },
+    colors: { ...DEFAULT_COLORS, ...colors },
+    fontSizes: { ...DEFAULT_FONT_SIZES, ...fontSizes },
+    lineHeights: { ...DEFAULT_LINE_HEIGHTS, ...lineHeights },
+    variants: { ...DEFAULT_VARIANTS, ...variants },
+    radii: { ...DEFAULT_RADII, ...radii },
+    elevations: { ...DEFAULT_ELEVATIONS, ...elevations },
+    letterSpacings: { ...DEFAULT_LETTER_SPACINGS, ...letterSpacings },
+  })
 
 export type TypefaceName = keyof typeof DEFAULT_TYPEFACES
 export type ColorName = keyof typeof DEFAULT_COLORS
