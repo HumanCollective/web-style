@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { THEME } from '../src/theme'
 import { Button, ButtonProps } from '../src/components'
+import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
   title: 'Button',
@@ -21,6 +22,7 @@ export default meta
 
 const Template: Story<ButtonProps> = (args) => (
   <ThemeProvider theme={THEME}>
+    <GlobalStyle />
     <Button {...args} />
   </ThemeProvider>
 )

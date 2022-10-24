@@ -3,33 +3,40 @@ import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
 import { THEME } from '../src/theme'
-import { Text, TextProps } from '../src/components'
+import { Box } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
-  title: 'Text',
-  component: Text,
-  argTypes: {
-    children: {
-      control: {
-        type: 'text',
-      },
-    },
-  },
-  args: {
-    children: 'Hello world',
-  },
-  parameters: {
-    controls: { expanded: true },
-  },
+  title: 'Sizing',
+  component: Box,
 }
 
 export default meta
 
-const Template: Story<TextProps> = (args) => (
+const Template: Story = () => (
   <ThemeProvider theme={THEME}>
     <GlobalStyle />
-    <Text {...args} />
+    <Box
+      backgroundColor="Shading.150"
+      unitHeight={2}
+      unitWidth={2}
+      unitsAround={1}
+      radius="md"
+    />
+    <Box
+      backgroundColor="Shading.150"
+      unitHeight={4}
+      unitWidth={6}
+      unitsAround={1}
+      radius="md"
+    />
+    <Box
+      backgroundColor="Shading.150"
+      unitHeight={8}
+      unitWidth={12}
+      unitsAround={1}
+      radius="md"
+    />
   </ThemeProvider>
 )
 

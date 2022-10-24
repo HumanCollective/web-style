@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { THEME } from '../src/theme'
 import { Input, InputProps } from '../src/components'
+import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
   title: 'Input',
@@ -17,6 +18,7 @@ export default meta
 
 const Template: Story<InputProps> = (args) => (
   <ThemeProvider theme={THEME}>
+    <GlobalStyle />
     <Input {...args} />
   </ThemeProvider>
 )

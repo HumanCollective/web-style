@@ -6,6 +6,9 @@ export const DEFAULT_VARIANTS = {
     paddingAround: 1,
     unitsAbove: 1 / 2,
     unitsBelow: 1 / 2,
+    style: {
+      padding: 12,
+    },
   },
 
   'Button.Primary.Container': {

@@ -5,22 +5,22 @@ import { getSurfaceStyle } from '../Box'
 import { Text, TextProps } from '../Text'
 import {
   useVariant,
-  SpaceAroundProps,
+  UnitsAroundProps,
   ColorProps,
   RadiusProps,
   ElevationProps,
   VariantProps,
-  SpacingProps,
+  SizingProps,
   FlexProps,
 } from '../../props'
 
 export interface ButtonProps
-  extends SpaceAroundProps,
+  extends UnitsAroundProps,
     ColorProps,
     RadiusProps,
     ElevationProps,
     VariantProps,
-    SpacingProps,
+    SizingProps,
     FlexProps,
     Omit<TextProps, 'as'>,
     Omit<HTMLProps<HTMLButtonElement>, 'style' | 'height' | 'width'> {
