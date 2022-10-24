@@ -1,4 +1,3 @@
-import { DefaultTheme } from 'styled-components'
 import { DEFAULT_BREAKPOINTS } from './breakpoints'
 import { DEFAULT_COLORS } from './colors'
 import { DEFAULT_FONT_SIZES } from './fontSizes'
@@ -10,17 +9,18 @@ import { DEFAULT_RADII } from './radii'
 import { DEFAULT_ELEVATIONS } from './elevations'
 import { DEFAULT_LETTER_SPACINGS } from './letterSpacings'
 import { DEFAULT_GRID_UNITS } from './gridUnits'
+import { Typeface } from '../types'
 
 export const makeTheme = <
-  ProjectDefaults,
-  ProjectTypefaces,
-  ProjectColors,
-  ProjectFontSizes,
-  ProjectLineHeights,
-  ProjectVariants,
-  ProjectRadii,
-  ProjectElevations,
-  ProjectLetterSpacings
+  ProjectDefaults = Record<string, string | number>,
+  ProjectTypefaces = Record<string, Typeface>,
+  ProjectColors = Record<string, string>,
+  ProjectFontSizes = Record<string, number | number[]>,
+  ProjectLineHeights = Record<string, number>,
+  ProjectVariants = Record<string, any>,
+  ProjectRadii = Record<string, number>,
+  ProjectElevations = Record<string, any>,
+  ProjectLetterSpacings = Record<string, number>
 >({
   defaults = {} as ProjectDefaults,
   breakpoints = null as number[] | null,
