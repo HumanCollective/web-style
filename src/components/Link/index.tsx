@@ -19,13 +19,93 @@ export const AnchorLink: FunctionComponent<TextProps &
 }
 
 export const Link: FunctionComponent<LinkProps &
-  VariantProps & {
+  VariantProps &
+  TextProps & {
     children: ReactNode
-    anchorProps?: TextProps & HTMLProps<HTMLAnchorElement>
+    anchorProps?: HTMLProps<HTMLAnchorElement>
     target?: '_blank'
-  }> = ({ as, variant, children, anchorProps, target, ...rest }) => (
+  }> = ({
+  as,
+  children,
+  target,
+  anchorProps,
+
+  variant,
+  unitsAround,
+  unitsAbove,
+  unitsBelow,
+  unitsLeft,
+  unitsRight,
+  backgroundColor,
+  textColor,
+  hoverTextColor,
+  hoverBackgroundColor,
+  borderColor,
+  hoverBorderColor,
+  font,
+  typeface,
+  uppercase,
+  lowercase,
+  capitalize,
+  fontSize,
+  lineHeight,
+  leftText,
+  centerText,
+  rightText,
+  justifyText,
+  underline,
+  unitWidth,
+  minUnitWidth,
+  maxUnitWidth,
+  unitHeight,
+  minUnitHeight,
+  maxUnitHeight,
+  grow,
+  flex,
+  shrink,
+  letterSpacing,
+
+  ...rest
+}) => (
   <NextLink passHref {...rest}>
-    <AnchorLink variant={variant} target={target} {...anchorProps}>
+    <AnchorLink
+      variant={variant}
+      unitsAround={unitsAround}
+      unitsAbove={unitsAbove}
+      unitsBelow={unitsBelow}
+      unitsLeft={unitsLeft}
+      unitsRight={unitsRight}
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      hoverTextColor={hoverTextColor}
+      hoverBackgroundColor={hoverBackgroundColor}
+      borderColor={borderColor}
+      hoverBorderColor={hoverBorderColor}
+      font={font}
+      typeface={typeface}
+      uppercase={uppercase}
+      lowercase={lowercase}
+      capitalize={capitalize}
+      fontSize={fontSize}
+      lineHeight={lineHeight}
+      leftText={leftText}
+      centerText={centerText}
+      rightText={rightText}
+      justifyText={justifyText}
+      underline={underline}
+      unitWidth={unitWidth}
+      minUnitWidth={minUnitWidth}
+      maxUnitWidth={maxUnitWidth}
+      unitHeight={unitHeight}
+      minUnitHeight={minUnitHeight}
+      maxUnitHeight={maxUnitHeight}
+      grow={grow}
+      flex={flex}
+      shrink={shrink}
+      letterSpacing={letterSpacing}
+      target={target}
+      {...anchorProps}
+    >
       {children}
     </AnchorLink>
   </NextLink>
