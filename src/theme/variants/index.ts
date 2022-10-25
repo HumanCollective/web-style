@@ -1,29 +1,30 @@
-import { InputVariant, RichTextVariant, TextStyleProps } from '../../components'
+import { RichTextVariant, TextStyleProps } from '../../components'
 
-export const defaultInputVariant: InputVariant = {
-  default: {
-    fontSize: 'md',
-    backgroundColor: 'Shading.125',
-    borderColor: 'Shading.250',
-    radius: 'md',
-    style: {
-      padding: 12,
-    },
+export const defaultInputVariant = {
+  fontSize: 'md',
+  backgroundColor: 'Shading.125',
+  borderColor: 'Shading.250',
+  radius: 'md',
+  style: {
+    padding: 12,
   },
-  disabled: {
-    fontSize: 'md',
-    backgroundColor: 'Shading.150',
-    radius: 'md',
-    style: {
-      padding: 12,
+  states: {
+    disabled: {
+      fontSize: 'md',
+      backgroundColor: 'Shading.150',
+      radius: 'md',
+      style: {
+        padding: 12,
+      },
     },
-  },
-  active: {
-    fontSize: 'md',
-    backgroundColor: 'Shading.150',
-    radius: 'md',
-    style: {
-      padding: 12,
+    focused: {
+      fontSize: 'md',
+      borderColor: 'Primary.300',
+      backgroundColor: 'Shading.150',
+      radius: 'md',
+      style: {
+        padding: 12,
+      },
     },
   },
 }

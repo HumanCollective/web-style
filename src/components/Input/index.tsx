@@ -1,5 +1,5 @@
-import React, { FunctionComponent, HTMLProps, Ref } from 'react'
-import styled from 'styled-components'
+import { HTMLProps, Ref } from 'react'
+import styled, { css } from 'styled-components'
 
 import {
   ColorProps,
@@ -16,7 +16,6 @@ import {
   UnitsAroundProps,
   getRadius,
   RadiusProps,
-  color,
   SizingProps,
 } from '../../props'
 
@@ -30,8 +29,9 @@ interface InputStyleProps
     RadiusProps,
     SizingProps {}
 
-export interface InputVariant {
+export interface InputStates {
   default: InputStyleProps
+  focused: InputStyleProps
   disabled: InputStyleProps
 }
 
@@ -39,34 +39,33 @@ interface BaseInputProps {
   ref?: Ref<HTMLInputElement>
 }
 
-export const BaseInput = styled.input<InputStyleProps>`
+export type InputProps = BaseInputProps &
+  HTMLProps<HTMLInputElement> & {
+    states?: InputStates
+  }
+
+const getStyles = (props: InputStyleProps) => css`
+  ${getFont(props)}
+  ${getColors(props)}
+  ${getUnitsAround(props)}
+  ${getCasing(props)}
+  ${getFontSize(props)}
+  ${getLineHeight(props)}
+  ${getRadius(props)}
+`
+
+export const Input = styled.input<InputProps & InputStyleProps>`
   display: flex;
   border: 1px solid transparent;
-  ${getFont}
-  ${getColors}
-  ${getUnitsAround}
-  ${getCasing}
-  ${getFontSize}
-  ${getLineHeight}
-  ${getRadius}
+  ${getStyles}
 
   &:focus {
     outline: none;
-    border-color: ${color('Primary.300')};
+    ${(props) => getStyles({ ...props, ...props.states?.focused })}
+  }
+
+  &:disabled {
+    outline: none;
+    ${(props) => getStyles({ ...props, ...props.states?.disabled })}
   }
 `
-
-export type InputProps = BaseInputProps &
-  HTMLProps<HTMLInputElement> & {
-    variant?: InputVariant
-  }
-
-export const Input: FunctionComponent<InputProps & InputStyleProps> = ({
-  ref,
-  variant,
-  disabled,
-  ...props
-}) => {
-  const selectedVariant = variant?.[disabled ? 'disabled' : 'default']
-  return <BaseInput {...selectedVariant} {...props} />
-}

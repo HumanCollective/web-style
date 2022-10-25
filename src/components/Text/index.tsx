@@ -1,4 +1,4 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
 import {
@@ -46,7 +46,6 @@ export interface TextProps {
   as?: keyof JSX.IntrinsicElements
   style?: CSSProperties
   children?: ReactNode
-  variant?: TextStyleProps
 }
 
 export const getTextStyle = (props: TextStyleProps = {}) => css`
@@ -64,12 +63,6 @@ export const getTextStyle = (props: TextStyleProps = {}) => css`
   ${getTransition(props)}
 `
 
-const StyledText = styled.span<TextStyleProps>`
+export const Text = styled.span<TextStyleProps>`
   ${getTextStyle}
 `
-
-export const Text: FunctionComponent<TextProps & TextStyleProps> = ({
-  as = 'p',
-  variant,
-  ...props
-}) => <StyledText as={as} {...variant} {...props} />

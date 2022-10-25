@@ -1,9 +1,4 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  HTMLProps,
-  ReactNode,
-} from 'react'
+import { CSSProperties, HTMLProps, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 
 import {
@@ -43,7 +38,6 @@ export interface BoxProps {
   onClick?: DivProps['onClick']
   interactive?: boolean
   children?: ReactNode
-  variant?: BoxStyleProps
 }
 
 export const getSurfaceStyle = (props: BoxStyleProps = {}) => css<
@@ -62,11 +56,6 @@ export const getSurfaceStyle = (props: BoxStyleProps = {}) => css<
   ${getTransition(props)}
 `
 
-export const Surface = styled.div<BoxStyleProps>`
+export const Box = styled.div<BoxStyleProps>`
   ${getSurfaceStyle}
 `
-
-export const Box: FunctionComponent<BoxProps & BoxStyleProps> = ({
-  variant,
-  ...props
-}) => <Surface {...variant} {...props} />

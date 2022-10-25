@@ -3,32 +3,39 @@ import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
 import { DEFAULT_THEME } from '../src/theme'
-import { Fold, Input, InputProps } from '../src/components'
+import { Link, AnchorLink } from '../src/components'
 import { GlobalStyle } from '../src/globals'
-import { defaultInputVariant } from '../src/theme/variants'
 
 const meta: Meta = {
-  title: 'Input',
-  component: Input,
+  title: 'Link',
+  component: Link,
+  argTypes: {
+    children: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
+  args: {
+    children: 'Hello world',
+  },
   parameters: {
-    layout: 'fullscreen',
     controls: { expanded: true },
   },
 }
 
 export default meta
 
-const Template: Story<InputProps> = (args) => (
+const Template: Story = () => (
   <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
-    <Fold alignCenter alignMiddle backgroundColor="Shading.100">
-      <Input
-        {...defaultInputVariant}
-        unitsAround={1}
-        maxUnitWidth={40}
-        {...args}
-      />
-    </Fold>
+    <Link textColor="Primary.300" unitsBelow={3} href="/">
+      NextJS Link
+    </Link>
+    <br />
+    <AnchorLink textColor="Primary.300" unitsAbove={3} href="/">
+      Standard Link
+    </AnchorLink>
   </ThemeProvider>
 )
 

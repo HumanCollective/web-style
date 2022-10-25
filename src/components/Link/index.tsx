@@ -2,26 +2,17 @@ import React, { FunctionComponent, HTMLProps, ReactNode } from 'react'
 import NextLink, { LinkProps } from 'next/link'
 
 import { Text, TextProps, TextStyleProps } from '../Text'
-import { useVariant, VariantProps } from '../../props'
 
 export const AnchorLink: FunctionComponent<TextProps &
   TextStyleProps &
-  HTMLProps<HTMLAnchorElement>> = ({
-  children,
-  variant = 'Default',
-  ...rest
-}) => {
-  const style = useVariant(`Link.${variant}`)
-  return (
-    <Text as="a" {...style} {...rest}>
-      {children}
-    </Text>
-  )
-}
+  HTMLProps<HTMLAnchorElement>> = ({ children, ...rest }) => (
+  <Text as="a" {...rest}>
+    {children}
+  </Text>
+)
 
 export const Link: FunctionComponent<LinkProps &
   TextStyleProps &
-  VariantProps &
   TextProps & {
     children: ReactNode
     anchorProps?: HTMLProps<HTMLAnchorElement>
@@ -32,7 +23,6 @@ export const Link: FunctionComponent<LinkProps &
   target,
   anchorProps,
 
-  variant,
   unitsAround,
   unitsAbove,
   unitsBelow,
@@ -71,7 +61,6 @@ export const Link: FunctionComponent<LinkProps &
 }) => (
   <NextLink passHref {...rest}>
     <AnchorLink
-      variant={variant}
       unitsAround={unitsAround}
       unitsAbove={unitsAbove}
       unitsBelow={unitsBelow}

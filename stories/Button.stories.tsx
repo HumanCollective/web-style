@@ -36,32 +36,32 @@ const Template: Story<ButtonProps> = () => (
           <Column unitsAround={1}>
             <Button
               title="Primary"
-              variant={PrimaryButton}
+              {...PrimaryButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Disabled"
-              variant={PrimaryButton}
+              {...PrimaryButton}
               maxUnitWidth={20}
               unitsAround={1}
               disabled
             />
             <Button
               title="Danger"
-              variant={DangerButton}
+              {...DangerButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Warning"
-              variant={WarningButton}
+              {...WarningButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Success"
-              variant={SuccessButton}
+              {...SuccessButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
@@ -69,31 +69,31 @@ const Template: Story<ButtonProps> = () => (
           <Column unitsAround={1}>
             <Button
               title="Primary"
-              variant={PrimaryOutlineButton}
+              {...PrimaryOutlineButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Danger"
-              variant={DangerOutlineButton}
+              {...DangerOutlineButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Plain"
-              variant={PlainButton}
+              {...PlainButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Ghost"
-              variant={GhostButton}
+              {...GhostButton}
               maxUnitWidth={20}
               unitsAround={1}
             />
             <Button
               title="Dis. Ghost"
-              variant={GhostButton}
+              {...GhostButton}
               maxUnitWidth={20}
               unitsAround={1}
               disabled

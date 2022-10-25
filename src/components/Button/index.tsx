@@ -14,7 +14,7 @@ import {
   TransitionProps,
 } from '../../props'
 
-export interface ButtonStyleProps
+export interface ContainerStyleProps
   extends UnitsAroundProps,
     ColorProps,
     RadiusProps,
@@ -24,102 +24,96 @@ export interface ButtonStyleProps
     TransitionProps,
     CursorProps {}
 
-export interface ButtonStateVariant {
-  container?: ButtonStyleProps
-  label?: TextStyleProps
+export interface ButtonState {
+  containerProps?: ContainerStyleProps
+  labelProps?: TextStyleProps
 }
 
-export interface ButtonVariant {
-  normal?: ButtonStateVariant
-  disabled?: ButtonStateVariant
-  hover?: ButtonStateVariant
-  active?: ButtonStateVariant
+export interface ButtonStates {
+  disabled?: ButtonState
+  hover?: ButtonState
+  active?: ButtonState
+}
+
+export interface ButtonStyleProps extends ButtonState {
+  states?: ButtonStates
 }
 
 export interface ButtonProps
-  extends Omit<TextProps, 'as' | 'variant'>,
+  extends Omit<TextProps, 'as'>,
     Omit<HTMLProps<HTMLButtonElement>, 'style' | 'height' | 'width'> {
   title: string
-  onClick: () => void | Promise<void>
-  variant?: ButtonVariant
 }
 
-const makeSurfaceGetter = (
-  ...states: Array<'normal' | 'disabled' | 'hover' | 'active'>
-) => ({
-  variant,
-  ...rest
-}: {
-  variant?: ButtonVariant
-} & ButtonStyleProps) => {
-  let styles = {
-    cursor: 'pointer',
-  }
-  states.forEach((state) => {
-    styles = { ...styles, ...rest, ...variant?.[state]?.container }
-  })
-  return getSurfaceStyle(styles)
-}
+const Label = styled.span<{ states?: ButtonStates }>``
 
-const makeTextGetter = (
-  ...states: Array<'normal' | 'disabled' | 'hover' | 'active'>
-) => ({
-  variant,
-  ...rest
-}: {
-  variant?: ButtonVariant
-} & TextStyleProps) => {
-  let styles: TextStyleProps = {
-    unitsAround: 1,
-    flex: 1,
-    alignCenter: true,
-    alignMiddle: true,
-    centerText: true,
-  }
-  states.forEach((state) => {
-    styles = { ...styles, ...rest, ...variant?.[state]?.label }
-  })
-  return getTextStyle(styles)
-}
-
-const Label = styled.span<{ variant?: ButtonVariant }>``
-
-const Container = styled.button<ButtonStyleProps & { variant?: ButtonVariant }>`
+const Container = styled.button<ButtonStyleProps>`
   border: none;
   display: inline-flex;
 
-  ${makeSurfaceGetter('normal')}
+  ${(props) => getSurfaceStyle({ ...props, ...props.containerProps })}
   ${Label} {
-    ${makeTextGetter('normal')}
+    ${(props) => getTextStyle(props.labelProps)}
   }
 
   &:disabled {
-    ${makeSurfaceGetter('normal', 'disabled')}
+    ${(props) =>
+      getSurfaceStyle({
+        ...props,
+        ...props.containerProps,
+        ...props.states?.disabled?.containerProps,
+      })}
+
     ${Label} {
-      ${makeTextGetter('normal', 'disabled')}
+      ${(props) =>
+        getTextStyle({
+          ...props.labelProps,
+          ...props.states?.disabled?.labelProps,
+        })}
     }
   }
+
   &:hover:not(:disabled) {
-    ${makeSurfaceGetter('normal', 'hover')}
+    ${(props) =>
+      getSurfaceStyle({
+        ...props,
+        ...props.containerProps,
+        ...props.states?.hover?.containerProps,
+      })}
     ${Label} {
-      ${makeTextGetter('normal', 'hover')}
+      ${(props) =>
+        getTextStyle({
+          ...props.labelProps,
+          ...props.states?.hover?.labelProps,
+        })}
     }
   }
   &:active:not(:disabled) {
-    ${makeSurfaceGetter('normal', 'hover', 'active')}
+    ${(props) =>
+      getSurfaceStyle({
+        ...props,
+        ...props.containerProps,
+        ...props.states?.hover?.containerProps,
+        ...props.states?.active?.containerProps,
+      })}
     ${Label} {
-      ${makeTextGetter('normal', 'hover', 'active')}
+      ${(props) =>
+        getTextStyle({
+          ...props.labelProps,
+          ...props.states?.hover?.labelProps,
+          ...props.states?.active?.labelProps,
+        })}
     }
   }
 `
 
 export const Button: FunctionComponent<ButtonProps & ButtonStyleProps> = ({
   title,
-  variant,
   as,
+  ref,
   ...rest
 }) => (
-  <Container variant={variant} {...rest}>
+  <Container {...rest}>
     <Label>{title}</Label>
   </Container>
 )
