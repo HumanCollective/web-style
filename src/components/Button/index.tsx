@@ -1,5 +1,5 @@
 import React, { FunctionComponent, HTMLProps } from 'react'
-import styled from 'styled-components'
+import styled, { css, DefaultTheme, ThemeProps } from 'styled-components'
 
 import { getSurfaceStyle } from '../Box'
 import { getTextStyle, TextProps, TextStyleProps } from '../Text'
@@ -14,7 +14,7 @@ import {
   TransitionProps,
 } from '../../props'
 
-export interface ContainerStyleProps
+interface ContainerStyleProps
   extends UnitsAroundProps,
     ColorProps,
     RadiusProps,
@@ -24,19 +24,15 @@ export interface ContainerStyleProps
     TransitionProps,
     CursorProps {}
 
-export interface ButtonState {
+interface ButtonStateProps {
   containerProps?: ContainerStyleProps
   labelProps?: TextStyleProps
 }
 
-export interface ButtonStates {
-  disabled?: ButtonState
-  hover?: ButtonState
-  active?: ButtonState
-}
-
-export interface ButtonStyleProps extends ButtonState {
-  states?: ButtonStates
+export interface ButtonStyleProps
+  extends ButtonStateProps,
+    ContainerStyleProps {
+  states?: { [stateName: string]: ButtonStateProps }
 }
 
 export interface ButtonProps
@@ -45,36 +41,37 @@ export interface ButtonProps
   title: string
 }
 
-const Label = styled.span<{ states?: ButtonStates }>``
+const Label = styled.span``
+
+const getStateStyles = (state?: string) => (
+  props: ButtonStyleProps & ThemeProps<DefaultTheme>,
+) => css`
+  ${getSurfaceStyle({
+    ...props?.containerProps,
+    ...(state ? props.states?.[state]?.containerProps : {}),
+  })}
+  ${Label} {
+    ${getTextStyle({
+      ...props?.labelProps,
+      ...(state ? props.states?.[state]?.labelProps : {}),
+    })}
+  }
+`
 
 const Container = styled.button<ButtonStyleProps>`
   border: none;
   display: inline-flex;
+  ${getSurfaceStyle}
+  ${getStateStyles()}
 
-  ${(props) => getSurfaceStyle(props.containerProps)}
-  ${Label} {
-    ${(props) => getTextStyle(props.labelProps)}
-  }
-
-  &:disabled {
-    ${(props) => getSurfaceStyle(props.states?.disabled?.containerProps)}
-    ${Label} {
-      ${(props) => getTextStyle(props.states?.disabled?.labelProps)}
-    }
-  }
-
-  &:hover:not(:disabled) {
-    ${(props) => getSurfaceStyle(props.states?.hover?.containerProps)}
-    ${Label} {
-      ${(props) => getTextStyle(props.states?.hover?.labelProps)}
-    }
-  }
-  &:active:not(:disabled) {
-    ${(props) => getSurfaceStyle(props.states?.active?.containerProps)}
-    ${Label} {
-      ${(props) => getTextStyle(props.states?.active?.labelProps)}
-    }
-  }
+  ${({ states = {} }) =>
+    Object.keys(states).map(
+      (state) => css`
+        &:${state} {
+          ${getStateStyles(state)}
+        };
+      `,
+    )}
 `
 
 export const Button: FunctionComponent<ButtonProps & ButtonStyleProps> = ({

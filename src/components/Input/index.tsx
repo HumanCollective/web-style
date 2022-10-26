@@ -1,5 +1,5 @@
 import { HTMLProps, Ref } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme, ThemeProps } from 'styled-components'
 
 import {
   ColorProps,
@@ -29,18 +29,12 @@ interface InputStateProps
     RadiusProps,
     SizingProps {}
 
-export interface InputStates {
-  default?: InputStateProps
-  focused?: InputStateProps
-  disabled?: InputStateProps
-}
-
 interface BaseInputProps {
   ref?: Ref<HTMLInputElement>
 }
 
 export interface InputStyleProps extends InputStateProps {
-  states?: InputStates
+  states?: { [stateName: string]: InputStateProps }
 }
 
 export type InputProps = BaseInputProps & HTMLProps<HTMLInputElement> & {}
@@ -55,16 +49,21 @@ const getStyles = (props: InputStateProps = {}) => css`
   ${getRadius(props)}
 `
 
+const getStateStyles = (state?: string) => (
+  props: InputStyleProps & ThemeProps<DefaultTheme>,
+) => getStyles({ ...props, ...(state ? props.states?.[state] : {}) })
+
 export const Input = styled.input<InputProps & InputStyleProps>`
   display: flex;
   border: 1px solid transparent;
   ${getStyles}
 
-  &:focus {
-    ${(props) => getStyles(props.states?.focused)}
-  }
-
-  &:disabled {
-    ${(props) => getStyles(props.states?.disabled)}
-  }
+  ${({ states = {} }) =>
+    Object.keys(states).map(
+      (state) => css`
+        &:${state} {
+          ${getStateStyles(state)}
+        };
+      `,
+    )}
 `

@@ -11,7 +11,8 @@ export const getFont = ({ font, typeface }: FontProps) => ({
   theme: DefaultTheme
 }) => {
   const typefaceDef =
-    theme.typefaces[typeface ?? ''] || theme.typefaces[theme.defaults.typeface]
+    (typeface && theme.typefaces[typeface]) ||
+    theme.typefaces[theme.defaults.typeface]
   return font && typefaceDef.fonts[font]
     ? typefaceDef.fonts[font]
     : typefaceDef.fonts[typefaceDef.defaults.font]
