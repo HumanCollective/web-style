@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
 import { DEFAULT_THEME } from '../src/theme'
-import { Text, TextProps } from '../src/components'
+import { Column, Text, TextProps } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
@@ -29,7 +29,14 @@ export default meta
 const Template: Story<TextProps> = (args) => (
   <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
-    <Text {...args} />
+    <Column>
+      <Text {...args} />
+      <Text textColor="Primary.100" {...args} />
+      <Text textColor="Primary.200" {...args} />
+      <Text textColor="Primary.300" {...args} />
+      <Text textColor="Primary.400" {...args} />
+      <Text textColor="Primary.500" {...args} />
+    </Column>
   </ThemeProvider>
 )
 
