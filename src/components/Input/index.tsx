@@ -30,9 +30,9 @@ interface InputStateProps
     SizingProps {}
 
 export interface InputStates {
-  default: InputStateProps
-  focused: InputStateProps
-  disabled: InputStateProps
+  default?: InputStateProps
+  focused?: InputStateProps
+  disabled?: InputStateProps
 }
 
 interface BaseInputProps {
@@ -40,7 +40,7 @@ interface BaseInputProps {
 }
 
 export interface InputStyleProps extends InputStateProps {
-  states: InputStates
+  states?: InputStates
 }
 
 export type InputProps = BaseInputProps & HTMLProps<HTMLInputElement> & {}
