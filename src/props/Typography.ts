@@ -10,10 +10,11 @@ export const getFont = ({ font, typeface }: FontProps) => ({
 }: {
   theme: DefaultTheme
 }) => {
-  const { fonts, defaults } =
-    (typeface && theme.typefaces[typeface]) ??
-    theme.typefaces[theme.defaults.typeface]
-  return (font && fonts[font]) ?? fonts[defaults.font]
+  const typefaceDef =
+    theme.typefaces[typeface ?? ''] || theme.typefaces[theme.defaults.typeface]
+  return font && typefaceDef.fonts[font]
+    ? typefaceDef.fonts[font]
+    : typefaceDef.fonts[typefaceDef.defaults.font]
 }
 
 export interface CasingProps {
@@ -34,7 +35,7 @@ export const getCasing = ({
 }
 
 export interface FontSizeProps {
-  fontSize?: keyof DefaultTheme['fontSizes'] | keyof DefaultTheme['fontSizes'][]
+  fontSize?: keyof DefaultTheme['fontSizes']
 }
 
 const makeStaticSize = (size: number) => `font-size: ${size}px;`
@@ -101,10 +102,11 @@ const makeResponsiveLineHeight = (
 }
 
 export const getLineHeight = ({
-  lineHeight = 'md',
-  fontSize = 'md',
+  lineHeight,
+  fontSize,
 }: LineHeightProps = {}) => ({ theme }: { theme: DefaultTheme }) => {
   const { fontSizes, lineHeights, gridUnits, breakpoints } = theme
+  if (!lineHeight || !fontSize) return ''
   const ratio = lineHeights[lineHeight]
   const size = fontSizes[fontSize] as number | number[]
   return Array.isArray(size)
