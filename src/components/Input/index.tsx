@@ -19,7 +19,7 @@ import {
   SizingProps,
 } from '../../props'
 
-interface InputStyleProps
+interface InputStateProps
   extends UnitsAroundProps,
     ColorProps,
     FontProps,
@@ -30,21 +30,22 @@ interface InputStyleProps
     SizingProps {}
 
 export interface InputStates {
-  default: InputStyleProps
-  focused: InputStyleProps
-  disabled: InputStyleProps
+  default: InputStateProps
+  focused: InputStateProps
+  disabled: InputStateProps
 }
 
 interface BaseInputProps {
   ref?: Ref<HTMLInputElement>
 }
 
-export type InputProps = BaseInputProps &
-  HTMLProps<HTMLInputElement> & {
-    states?: InputStates
-  }
+export interface InputStyleProps extends InputStateProps {
+  states: InputStates
+}
 
-const getStyles = (props: InputStyleProps) => css`
+export type InputProps = BaseInputProps & HTMLProps<HTMLInputElement> & {}
+
+const getStyles = (props: InputStateProps = {}) => css`
   ${getFont(props)}
   ${getColors(props)}
   ${getUnitsAround(props)}
@@ -60,12 +61,10 @@ export const Input = styled.input<InputProps & InputStyleProps>`
   ${getStyles}
 
   &:focus {
-    outline: none;
-    ${(props) => getStyles({ ...props, ...props.states?.focused })}
+    ${(props) => getStyles(props.states?.focused)}
   }
 
   &:disabled {
-    outline: none;
-    ${(props) => getStyles({ ...props, ...props.states?.disabled })}
+    ${(props) => getStyles(props.states?.disabled)}
   }
 `
