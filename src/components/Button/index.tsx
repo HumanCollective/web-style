@@ -51,58 +51,28 @@ const Container = styled.button<ButtonStyleProps>`
   border: none;
   display: inline-flex;
 
-  ${(props) => getSurfaceStyle({ ...props, ...props.containerProps })}
+  ${(props) => getSurfaceStyle(props.containerProps)}
   ${Label} {
     ${(props) => getTextStyle(props.labelProps)}
   }
 
   &:disabled {
-    ${(props) =>
-      getSurfaceStyle({
-        ...props,
-        ...props.containerProps,
-        ...props.states?.disabled?.containerProps,
-      })}
-
+    ${(props) => getSurfaceStyle(props.states?.disabled?.containerProps)}
     ${Label} {
-      ${(props) =>
-        getTextStyle({
-          ...props.labelProps,
-          ...props.states?.disabled?.labelProps,
-        })}
+      ${(props) => getTextStyle(props.states?.disabled?.labelProps)}
     }
   }
 
   &:hover:not(:disabled) {
-    ${(props) =>
-      getSurfaceStyle({
-        ...props,
-        ...props.containerProps,
-        ...props.states?.hover?.containerProps,
-      })}
+    ${(props) => getSurfaceStyle(props.states?.hover?.containerProps)}
     ${Label} {
-      ${(props) =>
-        getTextStyle({
-          ...props.labelProps,
-          ...props.states?.hover?.labelProps,
-        })}
+      ${(props) => getTextStyle(props.states?.hover?.labelProps)}
     }
   }
   &:active:not(:disabled) {
-    ${(props) =>
-      getSurfaceStyle({
-        ...props,
-        ...props.containerProps,
-        ...props.states?.hover?.containerProps,
-        ...props.states?.active?.containerProps,
-      })}
+    ${(props) => getSurfaceStyle(props.states?.active?.containerProps)}
     ${Label} {
-      ${(props) =>
-        getTextStyle({
-          ...props.labelProps,
-          ...props.states?.hover?.labelProps,
-          ...props.states?.active?.labelProps,
-        })}
+      ${(props) => getTextStyle(props.states?.active?.labelProps)}
     }
   }
 `
