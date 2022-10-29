@@ -135,14 +135,14 @@ export const getTextAlign = ({
 }
 
 export interface UnderlineProps {
-  underline?: boolean | 'hover'
+  underline?: boolean | 'under'
 }
 
 export const getUnderline = ({ underline }: UnderlineProps = {}) => {
   if (typeof underline === 'boolean') {
     return `text-decoration: ${underline === true ? 'underline' : 'none'};`
-  } else if (underline === 'hover') {
-    return '&:hover { text-decoration: underline; }'
+  } else if (underline === 'under') {
+    return 'text-decoration: underline; text-underline-position: under;'
   }
   return ''
 }
