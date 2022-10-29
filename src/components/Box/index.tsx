@@ -14,13 +14,13 @@ import {
 import {
   getColors,
   getUnitsAround,
+  getTransition,
   getRadius,
   getSizing,
   getFlex,
   getElevation,
   getCursor,
 } from '../../props'
-import { getTransition } from '../../props/Transition'
 
 type DivProps = HTMLProps<HTMLDivElement>
 
