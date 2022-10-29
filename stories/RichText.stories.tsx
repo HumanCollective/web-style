@@ -4,8 +4,8 @@ import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
 import { GlobalStyle } from '../src/globals'
-import { longformRichText } from '../src/variants'
 import { RichText, RichTextProps } from '../src/components'
+import { longformRichText } from './variants'
 
 const meta: Meta = {
   title: 'RichText',

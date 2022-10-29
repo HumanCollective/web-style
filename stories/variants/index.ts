@@ -1,4 +1,4 @@
-import { RichTextVariant, TextStyleProps } from '../components'
+import { RichTextVariant, TextStyleProps } from '../../src/components'
 
 export const defaultInputVariant = {
   fontSize: 'md',

@@ -1,4 +1,4 @@
-import { ButtonStyleProps } from '../../components'
+import { ButtonStyleProps } from '../../../src/components'
 
 const makeButtonStyleProps = ({
   color,

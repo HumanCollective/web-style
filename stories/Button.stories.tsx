@@ -14,7 +14,7 @@ import {
   DangerOutlineButton,
   PlainButton,
   GhostButton,
-} from '../src/variants/Button'
+} from './variants/Button'
 
 const meta: Meta = {
   title: 'Button',

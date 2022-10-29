@@ -3,12 +3,12 @@ import { Meta, Story } from '@storybook/react'
 import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
-import { Link, AnchorLink } from '../src/components'
+import { AnchorLink } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 
 const meta: Meta = {
-  title: 'Link',
-  component: Link,
+  title: 'AnchorLink',
+  component: AnchorLink,
   argTypes: {
     children: {
       control: {
@@ -29,10 +29,6 @@ export default meta
 const Template: Story = () => (
   <ThemeProvider theme={DEFAULT_THEME}>
     <GlobalStyle />
-    <Link textColor="Primary.300" unitsBelow={3} href="/">
-      NextJS Link
-    </Link>
-    <br />
     <AnchorLink textColor="Primary.300" unitsAbove={3} href="/">
       Standard Link
     </AnchorLink>
