@@ -30,7 +30,7 @@
       "pre-commit": "tsdx lint"
     }
   },
-  "name": "@humancollective/web-style",
+  "name": "@shallot-ui/web",
   "author": "Human Collective Inc.",
   "module": "dist/web-style.esm.js",
   "size-limit": [
