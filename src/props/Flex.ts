@@ -1,10 +1,5 @@
 import { css } from 'styled-components'
-
-export interface FlexProps {
-  grow?: number | true
-  flex?: number | true
-  shrink?: number | true
-}
+import { FlexProps } from '@shallot-ui/theme'
 
 export const getFlex = ({ grow, flex, shrink }: FlexProps) => css`
   ${flex ? `flex: ${flex === true ? 1 : flex};` : ''}

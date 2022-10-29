@@ -1,11 +1,11 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
-import { DEFAULT_THEME } from '../src/theme'
 import { Fold, Input, InputProps } from '../src/components'
+import { defaultInputVariant } from '../src/variants'
 import { GlobalStyle } from '../src/globals'
-import { defaultInputVariant } from '../src/theme/variants'
 
 const meta: Meta = {
   title: 'Input',

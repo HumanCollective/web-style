@@ -1,22 +1,24 @@
 import { CSSProperties, HTMLProps, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
-
 import {
-  ColorProps,
-  getColors,
-  getUnitsAround,
   UnitsAroundProps,
+  ColorProps,
   RadiusProps,
-  getRadius,
-  SizingProps,
-  getSizing,
-  FlexProps,
-  getFlex,
   ElevationProps,
-  getElevation,
-  getCursor,
+  SizingProps,
+  FlexProps,
   CursorProps,
   TransitionProps,
+} from '@shallot-ui/theme'
+
+import {
+  getColors,
+  getUnitsAround,
+  getRadius,
+  getSizing,
+  getFlex,
+  getElevation,
+  getCursor,
 } from '../../props'
 import { getTransition } from '../../props/Transition'
 

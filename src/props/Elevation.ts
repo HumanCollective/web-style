@@ -1,8 +1,5 @@
 import { css, DefaultTheme } from 'styled-components'
-
-export interface ElevationProps {
-  elevation?: keyof DefaultTheme['elevations']
-}
+import { ElevationProps } from '@shallot-ui/theme'
 
 export const getElevation = ({ elevation }: ElevationProps) => ({
   theme,

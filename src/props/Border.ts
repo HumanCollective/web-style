@@ -1,7 +1,4 @@
-export interface BorderProps {
-  borderWidth?: number
-  borderColor?: string
-}
+import { BorderProps } from '@shallot-ui/theme'
 
 export const getBorder = ({ borderWidth, borderColor }: BorderProps) => () => {
   if (borderWidth) {

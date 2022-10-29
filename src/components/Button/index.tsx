@@ -1,8 +1,5 @@
 import React, { FunctionComponent, HTMLProps } from 'react'
 import styled, { css, DefaultTheme, ThemeProps } from 'styled-components'
-
-import { getSurfaceStyle } from '../Box'
-import { getTextStyle, TextProps, TextStyleProps } from '../Text'
 import {
   UnitsAroundProps,
   ColorProps,
@@ -10,9 +7,12 @@ import {
   ElevationProps,
   SizingProps,
   FlexProps,
-  CursorProps,
   TransitionProps,
-} from '../../props'
+  CursorProps,
+} from '@shallot-ui/theme'
+
+import { getSurfaceStyle } from '../Box'
+import { getTextStyle, TextProps, TextStyleProps } from '../Text'
 
 interface ContainerStyleProps
   extends UnitsAroundProps,

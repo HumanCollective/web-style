@@ -1,30 +1,32 @@
 import { CSSProperties, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
+import {
+  UnitsAroundProps,
+  ColorProps,
+  FontProps,
+  CasingProps,
+  FontSizeProps,
+  LineHeightProps,
+  TextAlignProps,
+  UnderlineProps,
+  SizingProps,
+  FlexProps,
+  LetterSpacingProps,
+  TransitionProps,
+} from '@shallot-ui/theme'
 
 import {
-  ColorProps,
   getCasing,
   getColors,
   getFont,
   getFontSize,
   getLineHeight,
   getUnderline,
-  UnderlineProps,
-  FontProps,
-  CasingProps,
-  FontSizeProps,
-  LineHeightProps,
-  TextAlignProps,
   getUnitsAround,
-  UnitsAroundProps,
   getTextAlign,
   getSizing,
-  SizingProps,
-  FlexProps,
   getFlex,
-  LetterSpacingProps,
   getLetterSpacing,
-  TransitionProps,
   getTransition,
 } from '../../props'
 

@@ -1,22 +1,24 @@
 import { HTMLProps, Ref } from 'react'
 import styled, { css, DefaultTheme, ThemeProps } from 'styled-components'
+import {
+  UnitsAroundProps,
+  ColorProps,
+  FontProps,
+  CasingProps,
+  FontSizeProps,
+  LineHeightProps,
+  RadiusProps,
+  SizingProps,
+} from '@shallot-ui/theme'
 
 import {
-  ColorProps,
   getCasing,
   getColors,
   getFont,
   getFontSize,
   getLineHeight,
-  FontProps,
-  CasingProps,
-  FontSizeProps,
-  LineHeightProps,
   getUnitsAround,
-  UnitsAroundProps,
   getRadius,
-  RadiusProps,
-  SizingProps,
 } from '../../props'
 
 interface InputStateProps

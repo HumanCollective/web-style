@@ -1,9 +1,5 @@
 import { DefaultTheme } from 'styled-components'
-
-export interface RadiusProps {
-  radius?: string
-  rounded?: boolean
-}
+import { RadiusProps } from '@shallot-ui/theme'
 
 export const getRadius = ({ radius, rounded }: RadiusProps) => ({
   theme,

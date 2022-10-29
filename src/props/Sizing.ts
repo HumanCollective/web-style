@@ -1,13 +1,5 @@
 import { DefaultTheme } from 'styled-components'
-
-export interface SizingProps {
-  unitWidth?: number | number[]
-  minUnitWidth?: number | number[]
-  maxUnitWidth?: number | number[]
-  unitHeight?: number | number[]
-  minUnitHeight?: number | number[]
-  maxUnitHeight?: number | number[]
-}
+import { SizingProps } from '@shallot-ui/theme'
 
 const makeStaticSize = (cssProperty: string, units: number, grid: number) =>
   `${cssProperty}: ${units * grid}px;`

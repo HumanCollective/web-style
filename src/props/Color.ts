@@ -1,11 +1,5 @@
 import { DefaultTheme } from 'styled-components'
-
-// Style Props
-export interface ColorProps {
-  backgroundColor?: keyof DefaultTheme['colors']
-  textColor?: keyof DefaultTheme['colors']
-  borderColor?: keyof DefaultTheme['colors']
-}
+import { ColorProps } from '@shallot-ui/theme'
 
 const getColor = (
   name: keyof DefaultTheme['colors'] | undefined,

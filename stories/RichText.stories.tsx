@@ -1,11 +1,11 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
-import { DEFAULT_THEME } from '../src/theme'
 import { GlobalStyle } from '../src/globals'
+import { longformRichText } from '../src/variants'
 import { RichText, RichTextProps } from '../src/components'
-import { longformRichText } from '../src/theme/variants'
 
 const meta: Meta = {
   title: 'RichText',

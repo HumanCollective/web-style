@@ -1,10 +1,4 @@
-export interface UnitsAroundProps {
-  unitsAround?: number
-  unitsAbove?: number
-  unitsBelow?: number
-  unitsLeft?: number
-  unitsRight?: number
-}
+import { UnitsAroundProps } from '@shallot-ui/theme'
 
 export const getUnitsAround = ({
   unitsAround,

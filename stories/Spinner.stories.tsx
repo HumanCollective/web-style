@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
-import { DEFAULT_THEME } from '../src/theme'
 import { Row, Spinner } from '../src/components'
 import { GlobalStyle } from '../src/globals'
 

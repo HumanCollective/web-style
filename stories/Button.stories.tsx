@@ -1,10 +1,10 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import { DEFAULT_THEME } from '@shallot-ui/theme'
 import { ThemeProvider } from 'styled-components'
 
 import { Button, ButtonProps, Column, Fold, Row } from '../src/components'
 import { GlobalStyle } from '../src/globals'
-import { DEFAULT_THEME } from '../src/theme'
 import {
   PrimaryButton,
   DangerButton,
@@ -14,7 +14,7 @@ import {
   DangerOutlineButton,
   PlainButton,
   GhostButton,
-} from '../src/theme/variants/Button'
+} from '../src/variants/Button'
 
 const meta: Meta = {
   title: 'Button',

@@ -1,12 +1,11 @@
 import styled from 'styled-components'
+import {
+  VerticalAlignmentProps,
+  HorizontalAlignmentProps,
+} from '@shallot-ui/theme'
 
 import { Box, BoxProps, BoxStyleProps } from '../Box'
-import {
-  getHorizontalAlignment,
-  getVerticalAlignment,
-  HorizontalAlignmentProps,
-  VerticalAlignmentProps,
-} from '../../props'
+import { getHorizontalAlignment, getVerticalAlignment } from '../../props'
 
 export interface RowStyleProps
   extends VerticalAlignmentProps,

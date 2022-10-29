@@ -1,9 +1,13 @@
 import { DefaultTheme } from 'styled-components'
-
-export interface FontProps {
-  font?: string
-  typeface?: keyof DefaultTheme['typefaces']
-}
+import {
+  CasingProps,
+  FontProps,
+  FontSizeProps,
+  LineHeightProps,
+  UnderlineProps,
+  LetterSpacingProps,
+  TextAlignProps,
+} from '@shallot-ui/theme'
 
 export const getFont = ({ font, typeface }: FontProps) => ({
   theme,
@@ -18,12 +22,6 @@ export const getFont = ({ font, typeface }: FontProps) => ({
     : typefaceDef.fonts[typefaceDef.defaults.font]
 }
 
-export interface CasingProps {
-  uppercase?: boolean
-  lowercase?: boolean
-  capitalize?: boolean
-}
-
 export const getCasing = ({
   uppercase,
   lowercase,
@@ -33,10 +31,6 @@ export const getCasing = ({
   if (lowercase) return 'text-transform: lowercase;'
   if (capitalize) return 'text-transform: capitalize;'
   return ''
-}
-
-export interface FontSizeProps {
-  fontSize?: keyof DefaultTheme['fontSizes']
 }
 
 const makeStaticSize = (size: number) => `font-size: ${size}px;`
@@ -62,10 +56,6 @@ export const getFontSize = ({ fontSize = 'md' }: FontSizeProps = {}) => ({
   return Array.isArray(size)
     ? makeResponsiveSize(size, breakpoints)
     : makeStaticSize(size)
-}
-
-export interface LineHeightProps extends FontSizeProps {
-  lineHeight?: keyof DefaultTheme['lineHeights']
 }
 
 const snapToGrid = (value: number, gridUnits: number[]) =>
@@ -115,12 +105,6 @@ export const getLineHeight = ({
     : makeStaticLineHeight(size, ratio, gridUnits)
 }
 
-export interface TextAlignProps {
-  leftText?: boolean
-  centerText?: boolean
-  rightText?: boolean
-  justifyText?: boolean
-}
 export const getTextAlign = ({
   leftText,
   centerText,
@@ -134,10 +118,6 @@ export const getTextAlign = ({
   return ''
 }
 
-export interface UnderlineProps {
-  underline?: boolean | 'under'
-}
-
 export const getUnderline = ({ underline }: UnderlineProps = {}) => {
   if (typeof underline === 'boolean') {
     return `text-decoration: ${underline === true ? 'underline' : 'none'};`
@@ -147,9 +127,6 @@ export const getUnderline = ({ underline }: UnderlineProps = {}) => {
   return ''
 }
 
-export interface LetterSpacingProps {
-  letterSpacing?: keyof DefaultTheme['letterSpacings']
-}
 export const getLetterSpacing = ({
   letterSpacing,
 }: LetterSpacingProps = {}) => ({ theme }: { theme: DefaultTheme }) =>
