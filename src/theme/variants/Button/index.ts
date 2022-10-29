@@ -102,9 +102,7 @@ export const PrimaryButton: ButtonStyleProps = makeButtonStyleProps({
 })
 
 export const PrimaryOutlineButton: ButtonStyleProps = makeButtonOutlineStyleProps(
-  {
-    color: 'Primary',
-  },
+  { color: 'Primary' },
 )
 
 export const DangerButton: ButtonStyleProps = makeButtonStyleProps({
@@ -112,9 +110,7 @@ export const DangerButton: ButtonStyleProps = makeButtonStyleProps({
 })
 
 export const DangerOutlineButton: ButtonStyleProps = makeButtonOutlineStyleProps(
-  {
-    color: 'Danger',
-  },
+  { color: 'Danger' },
 )
 
 export const WarningButton: ButtonStyleProps = makeButtonStyleProps({

@@ -30,10 +30,7 @@ export const Link: FunctionComponent<LinkProps &
   unitsRight,
   backgroundColor,
   textColor,
-  hoverTextColor,
-  hoverBackgroundColor,
   borderColor,
-  hoverBorderColor,
   font,
   typeface,
   uppercase,
@@ -68,10 +65,7 @@ export const Link: FunctionComponent<LinkProps &
       unitsRight={unitsRight}
       backgroundColor={backgroundColor}
       textColor={textColor}
-      hoverTextColor={hoverTextColor}
-      hoverBackgroundColor={hoverBackgroundColor}
       borderColor={borderColor}
-      hoverBorderColor={hoverBorderColor}
       font={font}
       typeface={typeface}
       uppercase={uppercase}
